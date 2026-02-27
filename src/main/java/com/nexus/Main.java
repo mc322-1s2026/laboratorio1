@@ -1,7 +1,10 @@
 package com.nexus;
 
+import com.nexus.model.Task;
 import com.nexus.model.User;
 import com.nexus.exception.NexusValidationException;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +22,24 @@ public class Main {
         register(users, "margaret.hamilton", "margo@nexus.com"); // Válido
 
         printUserTable(users);
+
+        System.out.println("\n>>> Criando Backlog de Tarefas <<<\n");
+
+        try {
+            Task t1 = new Task("Implementar Autenticação", LocalDate.now().plusDays(5));
+            Task t2 = new Task("Configurar Banco de Dados", LocalDate.now().plusDays(2));
+            
+            System.out.printf("Tarefa criada: [%d] %s (Status: %s)%n", 
+                t1.getId(), t1.getTitle(), t1.getStatus());
+            System.out.printf("Tarefa criada: [%d] %s (Status: %s)%n", 
+                t2.getId(), t2.getTitle(), t2.getStatus());
+                
+        } catch (Exception e) {
+            System.err.println("Erro ao gerenciar tarefas: " + e.getMessage());
+        }
+
+        System.out.println("\n>>> Métricas de Sistema <<<");
+        System.out.println("Total de Tarefas: " + Task.totalTasksCreated);
     }
 
     private static void register(List<User> list, String username, String email) {
@@ -43,8 +64,8 @@ public class Main {
 
         for (User u : users) {
             System.out.printf(headerFormat, 
-                truncate(u.getUsername(), 20), 
-                truncate(u.getEmail(), 30)
+                truncate(u.consultUsername(), 20), 
+                truncate(u.consultEmail(), 30)
             );
         }
         System.out.println("=".repeat(60));
