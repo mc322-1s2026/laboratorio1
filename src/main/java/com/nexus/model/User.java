@@ -10,11 +10,11 @@ public class User {
     }
 
     // O compilador reclamou da falta deste método:
-    public String getEmail() {
+    public String consultEmail() {
         return email;
     }
 
-    public String getUsername() {
+    public String consultUsername() {
         return username;
     }
 
