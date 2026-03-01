@@ -31,23 +31,11 @@ Você recebeu um sistema base que já possui a estrutura fundamental de pacotes 
 
 ---
 
-## 3. O Desafio da Evolução
-
-O sistema atual é funcional, mas rudimentar. Ele carece de uma estrutura hierárquica (Projetos) e de inteligência analítica (Relatórios). Sua missão nesta fase é garantir que a base seja ultra-resiliente para suportar as novas funcionalidades de larga escala que serão acopladas.
-
-> **Nota do Arquiteto:** "Código que apenas funciona é dívida técnica. Código que protege o estado do sistema é engenharia."
-
----
-
-**Podemos seguir para a próxima parte? Deseja que eu detalhe os requisitos da nova classe `Project` ou passamos para as regras de negócio de `User` e `Task`?**
-
-Com essas adições, a **Seção 4** ganha uma camada extra de rigor técnico, exigindo que o aluno pense além do óbvio. Aqui está a versão revisada e atualizada:
-
----
-
-## 4. Implementação Consistente: Blindando o Modelo
+## 3. Implementação Consistente: Blindando o Modelo
 
 Nesta etapa, você deve garantir que o sistema seja **auto-validável**. No Nexus, não confiamos que o usuário ou o `LogProcessor` enviará dados corretos. O seu código deve impedir estados inconsistentes através do lançamento de exceções e validações rigorosas (estratégia *Fail-Fast*).
+
+> **Nota do Arquiteto:** "Código que apenas funciona é dívida técnica. Código que protege o estado do sistema é engenharia."
 
 Sempre que uma regra for violada, você deve lançar a **`NexusValidationException`** (para erros de negócio) ou **`IllegalArgumentException`** (para erros de entrada nula/inválida).
 
@@ -90,7 +78,7 @@ O seu desafio não é apenas escrever o código, mas garantir que ele seja **bli
 
 Aqui está a redação para a **Seção 5**, focada na expansão do sistema. Esta parte é o que elevará a complexidade do trabalho, exigindo que os alunos saiam da zona de conforto e criem novas estruturas de dados e fluxos de controle.
 
-## 5. Expansão do Ecossistema: Projetos, Inteligência e Automação
+## 4. Expansão do Ecossistema: Projetos, Inteligência e Automação
 
 O Nexus precisa evoluir para suportar grandes corporações. Nesta fase, você deixará de gerenciar tarefas isoladas e passará a gerenciar **Portfólios de Projetos**, além de automatizar o processamento de grandes volumes de dados.
 
@@ -132,7 +120,7 @@ Estes critérios foram desenhados para serem rigorosos, refletindo a carga horá
 
 ---
 
-## 6. Critérios de Avaliação (Checklist de Qualidade)
+## 5. Critérios de Avaliação (Checklist de Qualidade)
 
 O trabalho é em dupla (que deve ser trocada no próximo laboratório). A nota final será composta pela soma dos requisitos técnicos, com penalidades para violações de boas práticas de Orientação a Objetos. Seguem as notas e exemplos de avaliação.
 
