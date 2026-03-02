@@ -1,6 +1,17 @@
 # Lab 1: O Núcleo do Nexus — Arquitetura e Consistência
 
-## 1. O que é o Nexus?
+## 1. Sumário da Atividade
+
+Neste laboratório você deverá incrementar um sistema de gestão de tarefas corporativas, o **Nexus**. O foco principal dessa atividade será avaliar a sua capacidade de incrementar um modelo a partir de implementação de métodos e classes representativas, validação de regras de negócio e aplicação de boas práticas de Orientação a Objetos e o uso de Java moderno (Streams, Javadoc, etc). As seções estão divididas em:
+
+1. **O que é o Nexus?** – contexto e requisitos de um motor de gestão corporativa.
+2. **Infraestrutura Atual** – análise da estrutura de pacotes pré‑existente e das classes fundamentais (`User`, `Task`, `Workspace`, `LogProcessor`).
+3. **Implementação Consistente** – blindagem do modelo a partir do uso de exceções para validação de regras de negócio.
+4. **Expansão do Ecossistema** – criação de `Project`, relatórios com Streams e automação do `LogProcessor` para novos comandos.
+5. **Avaliação** – critérios de qualidade, métricas e penalidades que nortearão a correção.
+
+
+## 2. O que é o Nexus?
 
 O **Nexus** não é um ecossistema de gestão corporativa projetado para empresas que operam em escala global. No mercado atual, ferramentas de gestão (como Jira, Trello ou Asana) são o sistema nervoso das organizações. Elas controlam quem faz o quê, quando deve ser entregue e quais são os gargalos de produtividade.
 
@@ -10,7 +21,7 @@ Um motor de gestão como o Nexus precisa lidar com:
 * **Integridade de Dados:** Uma tarefa concluída não pode voltar a ser "Em Aberto" sem auditoria.
 * **Visibilidade Executiva:** Relatórios em tempo real sobre a saúde dos projetos.
 
-## 2. A Infraestrutura Atual (O Legado)
+## 3. A Infraestrutura Atual (O Legado)
 
 Você recebeu um sistema base que já possui a estrutura fundamental de pacotes e algumas classes de suporte. O sistema está dividido da seguinte forma:
 
@@ -31,7 +42,7 @@ Você recebeu um sistema base que já possui a estrutura fundamental de pacotes 
 
 ---
 
-## 3. Implementação Consistente: Blindando o Modelo
+## 4. Implementação Consistente: Blindando o Modelo
 
 Nesta etapa, você deve garantir que o sistema seja **auto-validável**. No Nexus, não confiamos que o usuário ou o `LogProcessor` enviará dados corretos. O seu código deve impedir estados inconsistentes através do lançamento de exceções e validações rigorosas (estratégia *Fail-Fast*).
 
@@ -76,9 +87,7 @@ O seu desafio não é apenas escrever o código, mas garantir que ele seja **bli
 
 **O objetivo é:** O sistema deve ser impossível de ser colocado em um estado inválido.
 
-Aqui está a redação para a **Seção 5**, focada na expansão do sistema. Esta parte é o que elevará a complexidade do trabalho, exigindo que os alunos saiam da zona de conforto e criem novas estruturas de dados e fluxos de controle.
-
-## 4. Expansão do Ecossistema: Projetos, Inteligência e Automação
+## 5. Expansão do Ecossistema: Projetos, Inteligência e Automação
 
 O Nexus precisa evoluir para suportar grandes corporações. Nesta fase, você deixará de gerenciar tarefas isoladas e passará a gerenciar **Portfólios de Projetos**, além de automatizar o processamento de grandes volumes de dados.
 
@@ -116,11 +125,9 @@ Você deve implementar o suporte aos seguintes comandos:
 
 Se o arquivo de log contiver um comando para uma tarefa que não existe, ou se um `CHANGE_STATUS` violar uma regra, o `LogProcessor` não deve travar. Ele deve capturar a `NexusValidationException`, incrementar o contador global de erros e prosseguir para a próxima linha do arquivo.
 
-Estes critérios foram desenhados para serem rigorosos, refletindo a carga horária de 18 horas e o nível de exigência de um sistema corporativo. A avaliação foca não apenas no "funcionar", mas na **qualidade da arquitetura** e na **resiliência do código**.
-
 ---
 
-## 5. Critérios de Avaliação (Checklist de Qualidade)
+## 6. Critérios de Avaliação (Checklist de Qualidade)
 
 O trabalho é em dupla (que deve ser trocada no próximo laboratório). A nota final será composta pela soma dos requisitos técnicos, com penalidades para violações de boas práticas de Orientação a Objetos. Seguem as notas e exemplos de avaliação.
 

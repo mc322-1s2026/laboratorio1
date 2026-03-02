@@ -12,12 +12,26 @@ import com.nexus.model.User;
 import com.nexus.service.LogProcessor;
 import com.nexus.service.Workspace;
 
+/**
+ * Ponto de entrada para a aplicação Nexus.
+ * *
+ * Esta classe fornece uma interface simples baseada em console usada no
+ * trabalho de laboratório. Gerencia uma coleção de {@link User usuários}
+ * e um {@link Workspace} onde as {@link Task tarefas} são armazenadas. As
+ * operações são realizadas através de um laço de menu e delegadas a métodos
+ * auxiliares.
+ */
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     private static final Workspace workspace = new Workspace();
     private static final List<User> users = new ArrayList<>();
     private static final LogProcessor logProcessor = new LogProcessor();
 
+    /**
+     * Inicia a aplicação e processa comandos do usuário até a terminação.
+     *
+     * @param args argumentos de linha de comando (ignorados)
+     */
     public static void main(String[] args) {
         boolean running = true;
 
@@ -44,6 +58,12 @@ public class Main {
         }
     }
 
+    /**
+     * Imprime o menu principal na saída padrão.
+     * <p>As opções do menu correspondem às escolhas tratadas em
+     * {@link #main(String[])}.
+     * </p>
+     */
     private static void displayMenu() {
         System.out.print("""
             
@@ -56,6 +76,11 @@ public class Main {
             Escolha uma opção:\s""");
     }
 
+    /**
+     * Solicita ao usuário nome de usuário e email, cria um novo {@link User} e
+     * adiciona-o à lista interna. Exceções de validação são relatadas no
+     * fluxo de erro.
+     */
     private static void addUser() {
         try {
             System.out.print("Username: ");
@@ -71,6 +96,11 @@ public class Main {
         }
     }
 
+    /**
+     * Coleta detalhes da tarefa do usuário, constrói uma {@link Task} e
+     * a acrescenta ao workspace. Erros de parsing de data são informados no
+     * stderr.
+     */
     private static void addTask() {
         try {
             System.out.print("Título da Tarefa: ");
@@ -86,6 +116,11 @@ public class Main {
         }
     }
 
+    /**
+     * Exibe todas as tarefas atualmente armazenadas no {@link Workspace} em
+     * formato de tabela simples. Se não existirem tarefas, imprime uma mensagem
+     * de notificação.
+     */
     private static void listTasks() {
         List<Task> tasks = workspace.getTasks();
         if (tasks.isEmpty()) {
@@ -109,6 +144,14 @@ public class Main {
         System.out.println("Total de tarefas: " + Task.totalTasksCreated);
     }
 
+    /**
+     * Trunca uma string para um comprimento máximo, acrescentando reticências
+     * se ela for maior que o tamanho especificado.
+     *
+     * @param str a string a ser truncada (pode ser {@code null})
+     * @param tam o comprimento máximo permitido
+     * @return uma string possivelmente reduzida; nunca {@code null}
+     */
     private static String truncar(String str, int tam) {
         if (str == null) return "";
         return str.length() > tam ? str.substring(0, tam - 3) + "..." : str;
