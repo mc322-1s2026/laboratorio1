@@ -21,7 +21,7 @@ Um motor de gestão como o Nexus precisa lidar com:
 * **Integridade de Dados:** Uma tarefa concluída não pode voltar a ser "Em Aberto" sem auditoria.
 * **Visibilidade Executiva:** Relatórios em tempo real sobre a saúde dos projetos.
 
-## 3. A Infraestrutura Atual (O Legado)
+## 3. A Infraestrutura Atual
 
 Você recebeu um sistema base que já possui a estrutura fundamental de pacotes e algumas classes de suporte. O sistema está dividido da seguinte forma:
 
@@ -40,11 +40,19 @@ Você recebeu um sistema base que já possui a estrutura fundamental de pacotes 
 
 * **`NexusValidationException`**: O sistema adota a filosofia **Fail-Fast**. Em vez de permitir que um dado errado circule, o sistema interrompe a execução e lança esta exceção customizada imediatamente após detectar uma violação de regra de negócio.
 
+## Executando código atual
+
+No VSCode, para abrir o Dev Container dê o comando `Ctrl+Shift+P` -> Dev Containers: Reopen in Container, pode acontecer da construção do container travar após acabar, se acontecer, dê `Ctrl+Shift+P` -> Developer: Reload Window.
+
+No github é possível abrir indo em <> Code -> Codespaces.
+
+Após aberto no container, execute `mvn clean compile exec:java`.
+
 ---
 
 ## 4. Implementação Consistente: Blindando o Modelo
 
-Nesta etapa, você deve garantir que o sistema seja **auto-validável**. No Nexus, não confiamos que o usuário ou o `LogProcessor` enviará dados corretos. O seu código deve impedir estados inconsistentes através do lançamento de exceções e validações rigorosas (estratégia *Fail-Fast*).
+Nesta etapa, você começará a implementar o sistema de forma que o mesmo seja **auto-validável**. No Nexus, não confiamos que o usuário ou o `LogProcessor` enviará dados corretos. O seu código deve impedir estados inconsistentes através do lançamento de exceções e validações rigorosas (estratégia *Fail-Fast*).
 
 > **Nota do Arquiteto:** "Código que apenas funciona é dívida técnica. Código que protege o estado do sistema é engenharia."
 
