@@ -141,7 +141,7 @@ O trabalho é em dupla (que deve ser trocada no próximo laboratório). A nota f
 
 ### A. Integridade e Encapsulamento (30%)
 
-* **Proteção de Estado:** As classes `User` e `Task` impedem a criação de objetos inválidos? (Ex: e-mail sem `@`, username vazio, IDs alteráveis após a criação).
+* **Proteção de Estado:** As classes `User` e `Task` impedem a criação de objetos inválidos?? (Ex: e-mail sem `@`, username vazio, IDs alteráveis após a criação).
 * **Encapsulamento:** O uso de `final` e a ausência de métodos `set` em campos sensíveis (como ID e Deadline) foi aplicado corretamente?
 * **Modificadores de Acesso:** O uso de `private` para atributos e `public/protected` para métodos foi feito de forma a esconder a implementação interna?
 
