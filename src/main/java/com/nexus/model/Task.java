@@ -3,7 +3,7 @@ package com.nexus.model;
 import java.time.LocalDate;
 
 public class Task {
-    // Métricas Globais (Alunos implementam a lógica de incremento/decremento)
+    // Métricas Globais (Implementar a lógica de incremento/decremento)
     public static int totalTasksCreated = 0;
     public static int totalValidationErrors = 0;
     public static int activeWorkload = 0;
@@ -22,7 +22,6 @@ public class Task {
         this.title = title;
         this.status = TaskStatus.TO_DO;
         
-        // Ação do Aluno:
         totalTasksCreated++; 
     }
 
